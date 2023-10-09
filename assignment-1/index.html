@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Image from SSE</title>
+	</head>
+	<body>
+		<img id="image" src="" alt="Image from SSE" />
+		<script>
+			const imageElement = document.getElementById("image");
+			const eventSource = new EventSource("/sse"); // Connect to the SSE endpoint
 
-<head>
-    <title>Image from SSE</title>
-</head>
-
-<body>
-    <img id="image" src="" alt="Image from SSE">
-    <script>
-        const imageElement = document.getElementById('image');
-        const eventSource = new EventSource('/sse'); // Connect to the SSE endpoint
-
-        eventSource.onmessage = (event) => {
-            const base64Image = event.data;
-            imageElement.src = 'data:image/jpeg;base64,' + base64Image; // Set the image source
-        };
-    </script>
-</body>
-
+			eventSource.onmessage = (event) => {
+				const base64Image = event.data;
+				imageElement.src = "data:image/jpeg;base64," + base64Image; // Set the image source
+			};
+		</script>
+	</body>
 </html>
