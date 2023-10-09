@@ -54,11 +54,16 @@ const server = http.createServer((req, res) => {
                         const imageBuffer = fs.readFileSync(imagePath);
                         // Convert the image to Base64
                         const base64Image = imageBuffer.toString('base64');
+                        // Write the image path to 'image-service.txt'
+                        fs.writeFile(filePath, imagePath, (err) => {
+                            if (err) {
+                                console.error('Error writing image path to file:', err);
+                            }
+                        });
                         // Send the Base64 image as text within an SSE event
                         res.write('data: ' + base64Image + '\n');
                         res.write('content-type: image/jpeg\n\n'); // Set the appropriate content type
                     }
-                    // think we need to handle if text ??
                 }
             });
         };
