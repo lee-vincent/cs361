@@ -6,12 +6,11 @@
 .cache
 dist
 
-# Node dependencies
-node_modules
-
-# Logs
-logs
-*.log
+# Dependency directories
+lib/
+bin/
+build/
+dist/
 
 # Misc
 .DS_Store
@@ -22,3 +21,14 @@ logs
 .env
 .env.*
 !.env.example
+\# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Visual Studio Code
+.vscode/
